@@ -20,4 +20,20 @@ public class string1 {
 
     }
 
+    public boolean isUniquewithoutDatastructures(String s){
+        boolean[] charmap = new boolean[128];
+
+        for(int i = 0; i<s.length(); i++){
+            if(charmap[s.charAt(i)]){
+                return false;
+            }else{
+                charmap[s.charAt(i)]= true;
+            }
+        }
+        return true;
+
+    }
+
+
+
 }
