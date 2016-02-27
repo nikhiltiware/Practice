@@ -25,7 +25,7 @@ public class commonMinima {
 
        }
 
-return 0;
+        return 0;
     }
 
 }
