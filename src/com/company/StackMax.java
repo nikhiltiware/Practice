@@ -10,40 +10,33 @@ public class StackMax {
 
     public void getStackMax(){
         Scanner sc = new Scanner(System.in);
-        int T = sc.nextInt();
-        Stack<Integer> s = new Stack<Integer>();
-        Stack<Integer> s2 = new Stack<Integer>();
-        int max=Integer.MIN_VALUE;
-        for(int i = 0; i<T; i++){
+        int n =sc.nextInt();
+        Stack<Integer> stack = new Stack<Integer>();
+        Stack<Integer> maxstack = new Stack<Integer>();
 
-            int ch = sc.nextInt();
+        for(int i = 0; i < n; i++){
+            int c = sc.nextInt();
+            if (c ==1) {
+                int data = sc.nextInt();
+                stack.push(data);
 
-            switch(ch){
-                case 1: {
-                    int data = sc.nextInt();
-                    s.push(data);
-                    if(s2.isEmpty() || data>s2.peek()){
-                        s2.push(data);
+                if (maxstack.isEmpty() || data >= maxstack.peek()){
+                    maxstack.push(data);
+                }
+
+            } else if (c == 2) {
+
+                if (!stack.isEmpty()){
+                    int temp = stack.pop();
+                    if (temp == maxstack.peek()){
+                        maxstack.pop();
                     }
-                    break;
                 }
-                case 2: {
-
-                    if(!s2.isEmpty() &&!s.isEmpty()&& s.peek() == s2.peek()){
-                        s2.pop();
-                    }else if(!s.isEmpty())
-                        s.pop();
-                    break;
+            } else {
+                if (!maxstack.isEmpty()) {
+                    System.out.println(maxstack.peek());
                 }
-                case 3: {
-                    System.out.println(s2.peek());
-                    break;
-                }
-
             }
-
-
-
         }
     }
 
