@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * Created by Nikhil on 2/20/16.
@@ -40,5 +41,29 @@ public class twoSum {
 
         }
         return result;
+    }
+
+
+    public void twoSumPrint(int[] nums, int target) {
+        HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            hm.put(nums[i], i);
+        }
+
+        HashSet<Integer> hs = new HashSet<Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            if (hm.get(target - nums[i]) != null && hm.get(target - nums[i]) != i) {
+                if(hs.size()==0 || !hs.contains(nums[i]))
+                {
+                    hs.add(nums[i]);
+                    hs.add(nums[hm.get(target - nums[i])]);
+                    System.out.println(nums[i]+","+nums[hm.get(target - nums[i])]);
+                }
+
+            }
+
+
+        }
+       // return temp;
     }
 }
