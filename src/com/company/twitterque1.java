@@ -5,4 +5,8 @@ package com.company;
  */
 public class twitterque1 {
 
+    public String closestIntegers(int len, String s)
+    {
+        return "";
+    }
 }
