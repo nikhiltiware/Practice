@@ -8,7 +8,7 @@ import java.util.Queue;
 /**
  * Created by Nikhil on 2/29/16.
  */
-public class allDepthsoftree {
+public class allDepthsoftree_levelorder {
 
 
     public void level(TreeNode root){
