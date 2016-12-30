@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -9,6 +10,7 @@ import java.util.HashSet;
 public class twoSum {
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
+        //HashMap<Date,String> hd = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             hm.put(nums[i], i);
         }
