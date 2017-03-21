@@ -18,7 +18,7 @@ public class phoneCodes {
 
     public  void getAllCodes(List<String> result, String[] map, String prefix, String number,int index)
     {
-        if(prefix.length() == 6)
+        if(prefix.length() == number.length())
         {
             result.add(prefix);
         }else
