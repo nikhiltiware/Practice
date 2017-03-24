@@ -12,7 +12,7 @@ public class numberOfSquares {
     {
         Set<Point> visited = new HashSet<>();
         HashSet<Point> set = new HashSet<>(points);
-        double maxArea = 0;
+        double maxSide = 0;
         for (int i = 0; i < points.size(); i++)
         {
             for (int j = i+1; j < points.size(); j++)
@@ -30,24 +30,25 @@ public class numberOfSquares {
                     if(!visited.containsAll(currentSquare))
                     {
                         visited.addAll(currentSquare);
-                        maxArea = Math.max(area, maxArea);
+                        maxSide = Math.max(area, maxSide);
                     }
 
                 }
-
-                if(set.contains(new Point(one.x-dx, one.y-dy)) && set.contains(new Point(two.x-dx, two.y-dy)))
+                Point predicted3 = new Point(one.x+dx, one.y+dy);
+                Point predicted4 = new Point(two.x+dx, two.y+dy);
+                if(set.contains(predicted3) && set.contains(predicted4))
                 {
-                    java.util.List<Point> currentSquare = Arrays.asList(one,two,new Point(one.x+dx, one.y+dy),new Point(two.x+dx, two.y+dy));
+                    java.util.List<Point> currentSquare = Arrays.asList(one,two,predicted3,predicted4);
                     if(!visited.containsAll(currentSquare))
                     {
                         visited.addAll(currentSquare);
-                        maxArea = Math.max(area, maxArea);
+                        maxSide = Math.max(area, maxSide);
                     }
                 }
             }
         }
 
-        return maxArea;
+        return maxSide*maxSide;
 
     }
 }
