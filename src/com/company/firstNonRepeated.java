@@ -7,21 +7,25 @@ import java.util.TreeMap;
  */
 public class firstNonRepeated {
 
-    public char getFirstNonRepeated(String s){
-        TreeMap<Character, Integer> tm = new TreeMap<Character, Integer>();
-        for(int i = 0; i<s.length(); i++)
-        {
-            char temp = s.charAt(i);
-            if(tm.containsKey(temp))
-                tm.put(s.charAt(i),tm.get(temp)+1);
-            else
-                tm.put(s.charAt(i),1);
+    public int firstUniqChar(String s) {
+        if (s==null || s.length()==0) return -1;
+        int len = s.length();
+        if (len==1) return 0;
+        char[] cc = s.toCharArray();
+        int slow =0, fast=1;
+        int[] count = new int[256];
+        count[cc[slow]]++;
+        while (fast < len) {
+            count[cc[fast]]++;
+            // if slow pointer is not a unique character anymore, move to the next unique one
+            while (slow < len && count[cc[slow]] > 1) slow++;
+            if (slow >= len) return -1; // no unique character exist
+            if (count[cc[slow]]==0) { // not yet visited by the fast pointer
+                count[cc[slow]]++;
+                fast=slow; // reset the fast pointer
+            }
+            fast++;
         }
-
-        for (char key: tm.keySet()) {
-            if(tm.get(key)==1)
-                return key;
-        }
-        return ' ';
+        return slow;
     }
 }
